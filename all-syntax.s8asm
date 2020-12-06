@@ -1,3 +1,9 @@
+
+; Use this to test syntax highlighters.
+; This is basically a summary of
+; https://dass.npst.no/filer/06-d5ae2db1e3a5e09627819701955556ea/SLEDE8.md
+
+
 ; -- COMMENTS --
 ; en kommentar
 NOPE ; en annen kommentar
