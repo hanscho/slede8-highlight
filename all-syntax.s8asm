@@ -1,0 +1,66 @@
+; -- COMMENTS --
+; en kommentar
+NOPE ; en annen kommentar
+
+
+; -- ARITHMANCY --
+
+PLUSS r0, r1   ; r0 = r0 + r1
+MINUS r0, r1   ; r0 = r0 - r1
+OG r0, r1      ; r0 = r0 & r1
+ELLER r0, r1   ; r0 = r0 | r1
+XELLER r0, r1  ; r0 = r0 ^ r1
+VSKIFT r0, r1  ; r0 = r0 << r1
+HSKIFT r0, r1  ; r0 = r0 >> r1
+
+
+; -- COMPARISON --
+
+LIK r0, r1     ; r0 == r1 => flag = 0 (false)
+ULIK r0, r1    ; r0 != r1 => flag = 1 (true)
+ME r0, r1      ; r0 <  r1 => flag = 1 (true)
+MEL r0, r1     ; r0 <= r1 => flag = 1 (true)
+SE r0, r1      ; r0 >  r1 => flag = 0 (false)
+SEL r0, r1     ; r0 >= r1 => flag = 0 (false)
+
+
+; -- FLOW CONTROL --
+NOPE
+LIK r0, r1             ; r0 == r1 => flag = 0 (false)
+BHOPP merkelapp01      ; hopper ikke, siden flag = 0
+LIK r0, r0             ; r0 == r0 => flag = 1 (true)
+BHOPP merkelapp01      ; hopp til merkelapp01 siden flag == 1
+STOPP                  ; denne instruksjonen blir hoppet over
+
+merkelapp01:       
+HOPP merkelapp02       ; hopp til merkelapp02
+STOPP                  ; denne instruksjonen blir hoppet over
+
+merkelapp02:       
+STOPP                  ; programmet stopper her
+
+0-9a-zA-ZæøåÆØÅ-_:     ; dette er en gyldig merkelapp, og hvilken som helst av tegnene kan være først
+
+TUR 0x0FFF|merkelapp01 ; adresse eller merkelapp
+RETUR
+
+
+; -- INPUT / OUTPUT --
+
+SETT r0, 128           ; r0 = 128 (0x80)
+SETT r1, 0xb           ; r1 =  11 (0x0b)
+
+LES r0
+SKRIV r0
+
+FINN MinStreng         ; addressOf(MinStreng) > write(r1, r0)
+FINN 0xABC             ; 0xABC > write(r1, r0)
+
+LAST r2                ; read(r1, r0) > r2
+LAGR r2                ; r2 > write(r1, r0)
+
+
+; -- DATA --
+
+MinStreng:
+.DATA 0x48,0x65,0x6c, 0x6c,0x6f,0x2c,0x20,0x77,0x6f,0x72,0x6c,0x64
